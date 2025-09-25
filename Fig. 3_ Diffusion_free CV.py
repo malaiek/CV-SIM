@@ -24,13 +24,13 @@ axs[0].plot(E_rxn_cntr(x_data,2,.15,1),-i_rxn_cntr(x_data,2),'r',linewidth='4')
 
 x_data=np.linspace(0.0001,0.9999,1000)
 
-#forward
+#forward reaction
 def E_hyster_ox(x,gamma,alpha): # alpha and gamma are parameters that account for reaction path
     return E_0+r*(np.log((1-x)/x)-(gamma/4)*(1-2*x)-gamma*alpha*np.exp(alpha*x))
 def i_hyster_ox(x,gamma,alpha):
     return -(f*q*v)*x*(1-x)/((gamma*(.5-alpha**2*np.exp(alpha*x)))*x*(1-x)-1)
 
-#backward
+#backward reaction
 def E_hyster_red(x,gamma,alpha):
     return E_0+r*(np.log((1-x)/x)-(gamma/4)*(1-2*x)-gamma*(.5-alpha)*np.exp((.5-alpha)*x))
 def i_hyster_red(x,gamma,alpha):
@@ -62,3 +62,4 @@ axs[0].legend(fontsize=12)
 axs[1].legend(loc='best',fontsize=10)
 plt.tight_layout()
 #plt.savefig('Fig.3.tiff',dpi=600)
+
